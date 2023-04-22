@@ -4,6 +4,8 @@ import mysql from "mysql2";
 // Imports dotenv file
 import dotenv from 'dotenv';
 dotenv.config();
+// Imports cors
+import cors from "cors";
 
 // Defines app variable
 const app = express();
@@ -18,6 +20,8 @@ const db = mysql.createConnection ({
 
 // Server middleware that allows us to use any json file using a client
 app.use(express.json());
+// Server middleware that allows cors
+app.use(cors());
 
 // Makes sure the backend is responding
 app.get("/", (req, res) => {
