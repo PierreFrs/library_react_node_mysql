@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 const Books = () => {
     const [books, setBooks] = useState([]);
 
@@ -26,6 +27,19 @@ const Books = () => {
         fetchAllBooks();
     }, []);
 
+    // Delete function
+    const handleDelete = async (id) => {
+        try {
+            // Delete action
+            await axios.delete(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/books/${id}`);
+            // Reload page
+            window.location.reload();
+        // Handles error
+        } catch(err) {
+            console.log(err);
+        };
+    };
+
   return (
     <div>
         <h1>Masaka Book Shop</h1>
@@ -38,7 +52,9 @@ const Books = () => {
                     <h2>{book.title}</h2>
                     <p>{book.desc}</p>
                     <span>{book.price}</span>
-                    <button className='delete'>Delete</button>
+                    {/* Delete button */}
+                    <button className='delete' onClick={() => handleDelete(book.id)}>Delete</button>
+                    {/* Update button */}
                     <button className='update'>Update</button>
                 </div>
             ))}

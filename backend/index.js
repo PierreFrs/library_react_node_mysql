@@ -61,6 +61,21 @@ app.post("/books", (req, res) => {
     });
 });
 
+// Delete query
+app.delete('/books/:id', (req, res) => {
+    // variable of the book to delete
+    const bookId = req.params.id;
+    // Database variable for the delete query
+    const q = "DELETE FROM books WHERE id = ?";
+    // Final delete query
+    db.query(q, [bookId], (err, data) => {
+        // Handles error
+        if (err) return res.json(err);
+        // Returns the response
+        return res.json("Book has been deleted successfully");
+    });
+});
+
 // Server listens on port
 app.listen(process.env.PORT, () => {
     // Server response
