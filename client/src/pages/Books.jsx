@@ -48,7 +48,7 @@ const Books = () => {
                     {book.cover && <img src={book.cover} alt="" />}
                     <h2>{book.title}</h2>
                     <p>{book.desc}</p>
-                    <span>{book.price}</span>
+                    <span>{book.price} €</span>
                     {/* Delete button */}
                     <button className='delete' onClick={() => handleDelete(book.id)}>Delete</button>
                     {/* Update button */}
@@ -56,7 +56,7 @@ const Books = () => {
                 </div>
             ))}
         </div>
-        <button><Link to={"/add"}>Add New Book</Link></button>
+        <button className='add_new'><Link className='add_link' to={"/add"}>Add New Book</Link></button>
     </div>
   );
 };
