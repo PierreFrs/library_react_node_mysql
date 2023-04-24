@@ -4,9 +4,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-
-
 const Books = () => {
     const [books, setBooks] = useState([]);
 
@@ -55,7 +52,7 @@ const Books = () => {
                     {/* Delete button */}
                     <button className='delete' onClick={() => handleDelete(book.id)}>Delete</button>
                     {/* Update button */}
-                    <button className='update'>Update</button>
+                    <button className='update'><Link to={`/update/${book.id}`}>Update</Link></button>
                 </div>
             ))}
         </div>

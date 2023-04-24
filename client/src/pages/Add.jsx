@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Add = () => {
     const [book, setBook] = useState({
-        titlr: "",
+        title: "",
         desc: "",
         price: null,
         cover: ""
@@ -13,13 +13,13 @@ const Add = () => {
 
     const navigate = useNavigate();
 
-    // handleChange function that allows to preview changes
+    // handleChange function that allows to update changes
     const handleChange = (e) => {
         setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     // handleClick function that sends the new books data to the database
-    const handleClick = async e => {
+    const handleClick = async (e) => {
         e.preventDefault();
         try {
             await axios.post(`http://localhost:${process.env.REACT_APP_SERVER_PORT}/books`, book);
@@ -37,7 +37,7 @@ const Add = () => {
         <input type="text" placeholder='Description' onChange={handleChange} name="desc"/>
         <input type="number" placeholder='Price' onChange={handleChange} name="price"/>
         <input type="text" placeholder='Cover' onChange={handleChange} name="cover"/>
-        <button onClick={handleClick}>Add Book</button>
+        <button className='formButton' onClick={handleClick}>Add Book</button>
     </div>
   )
 }
