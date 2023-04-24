@@ -12,6 +12,8 @@ import Books from "./pages/Books";
 import Add from "./pages/Add";
 import Update from "./pages/Update";
 
+import './style.css'
+
 // Creates the Routes
 function App() {
   return (
