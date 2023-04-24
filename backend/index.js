@@ -44,11 +44,12 @@ app.get("/books", (req, res) => {
 // Query for inserting books in the db
 app.post("/books", (req, res) => {
     // Creates the query variable
-    const q = "INSERT INTO books (`title`, `desc`, `cover`) VALUES (?)";
+    const q = "INSERT INTO books (`title`, `desc`, `price`, `cover`) VALUES (?)";
     // Creates the values const as an array
     const values = [
         req.body.title,
         req.body.desc,
+        req.body.price,
         req.body.cover
     ];
     // Asks the database to post the values

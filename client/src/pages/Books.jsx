@@ -31,6 +31,7 @@ const Books = () => {
         <h1>Masaka Book Shop</h1>
         {/* Imports books in the DOM */}
         <div className="books">
+            {/* Builds HTML for the books in the backend */}
             {books.map(book => (
                 <div className="book" key={book.id}>
                     {book.cover && <img src={book.cover} alt="" />}
