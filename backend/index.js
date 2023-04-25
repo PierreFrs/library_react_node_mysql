@@ -140,6 +140,18 @@ app.put('/books/:id', (req, res) => {
     });
 });
 
+// sends the frontend to deployement
+app.get("/*", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "..client/build/index.html"),
+        function (err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    )
+})
+
 // Server listens on port
 app.listen(process.env.PORT, () => {
     // Server response
