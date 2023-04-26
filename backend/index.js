@@ -9,14 +9,8 @@ dotenv.config();
 import cors from "cors";
 
 
-// Asks NOde to serve the files from the React build
-app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-
-// Pour les requêtes non traitées par le code précédent, ceci affiche l'appli React
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
+// // Asks NOde to serve the files from the React build
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Defines app variable
 const app = express();
@@ -168,3 +162,8 @@ app.listen(process.env.PORT, () => {
     // Server response
     console.log('Connected to backend !'); 
 });
+
+// //   // All other GET requests not handled before will return our React app
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+//   });
