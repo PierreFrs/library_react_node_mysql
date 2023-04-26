@@ -1,4 +1,5 @@
 // Imports
+import path from 'path';
 import express from 'express';
 import mysql from "mysql2";
 // Imports dotenv file
@@ -6,6 +7,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 // Imports cors
 import cors from "cors";
+
+
+// Asks NOde to serve the files from the React build
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+
+// Pour les requêtes non traitées par le code précédent, ceci affiche l'appli React
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
 // Defines app variable
 const app = express();
@@ -140,17 +151,17 @@ app.put('/books/:id', (req, res) => {
     });
 });
 
-// sends the frontend to deployement
-app.get("/*", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "..client/build/index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-        }
-    )
-})
+// // sends the frontend to deployement
+// app.get("/*", (req, res) => {
+//     res.sendFile(
+//         path.join(__dirname, "..client/build/index.html"),
+//         function (err) {
+//             if (err) {
+//                 res.status(500).send(err);
+//             }
+//         }
+//     )
+// })c
 
 // Server listens on port
 app.listen(process.env.PORT, () => {
